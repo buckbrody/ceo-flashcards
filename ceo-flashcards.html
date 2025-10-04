@@ -382,7 +382,7 @@
         }
     </style>
 </head>
-<body>
+<body style="display: none;" id="app-body">
     <div class="header">
         <h1>CEO Forum Flashcards</h1>
         <p>Learn the names and companies of prospective CEO attendees</p>
@@ -735,9 +735,23 @@
             }
         }
 
-        // Initialize app
-        loadProgress();
-        loadCard();
+        // Password protection
+        function checkPassword() {
+            const correctPassword = 'roper2025'; // Change this to your desired password
+            const userPassword = prompt('Enter password to access flashcards:');
+
+            if (userPassword === correctPassword) {
+                document.getElementById('app-body').style.display = 'flex';
+                loadProgress();
+                loadCard();
+            } else if (userPassword !== null) {
+                alert('Incorrect password');
+                checkPassword(); // Ask again
+            }
+        }
+
+        // Initialize app with password check
+        checkPassword();
     </script>
 </body>
 </html>
